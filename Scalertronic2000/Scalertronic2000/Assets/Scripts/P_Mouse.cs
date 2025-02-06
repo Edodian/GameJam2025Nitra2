@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Movement : MonoBehaviour
+public class P_Mouse : MonoBehaviour
 {
 
 	// Use this for initialization

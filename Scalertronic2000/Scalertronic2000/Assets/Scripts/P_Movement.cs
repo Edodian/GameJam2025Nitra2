@@ -1,37 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Mouse : MonoBehaviour
+public class P_Movement : MonoBehaviour
 {
-  public float moveSpeed = 3.0f; // rýchlosť pohybu
-  public float gravity = 9.81f;  // gravitácia, aby dopadol ak je vo vzduchu
-  private CharacterController myController; // definovaný char controller
-    public Vector3 movement;
+ public float jumpHeight = 2.4f;
+    public float movementSpeed = 3.0f;
+    public float sprintSpeed = 6.0f;
+    public float gravity = 9.81f;
 
-  private Rigidbody rb;
+    private CharacterController myController;
+    private Vector3 velocity;
+    public bool isGrounded;
 
-  void Start () { // iniciujeme char. controller
-   rb = gameObject.GetComponent<Rigidbody>();
-  }
-	
-  void Update () {
-    movement = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical"));
-
-
-    }
-
-        void FixedUpdate()
+    void Start()
     {
-        moveCharacter(movement);
+        myController = GetComponent<CharacterController>();
     }
 
-
-    void moveCharacter(Vector3 direction)
+    void Update()
     {
-        rb.velocity = direction * moveSpeed;
+        // Correct ground detection using CharacterController
+        isGrounded = myController.isGrounded;
 
-        Debug.Log("hhh");
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // Small downward force to ensure it sticks to the ground
+            //Debug.Log("Grounded!");
+        }
+
+        float movementY = Input.GetAxis("Vertical");
+        float movementX = Input.GetAxis("Horizontal");
+
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+        Vector3 move = transform.right * movementX + transform.forward * movementY;
+        myController.Move(move * (isRunning ? sprintSpeed : movementSpeed) * Time.deltaTime);
+
+        // Jumping
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
+        }
+
+        // Apply gravity
+        velocity.y -= gravity * Time.deltaTime;
+        myController.Move(velocity * Time.deltaTime);
     }
+
+
+
 }
-
