@@ -1216,6 +1216,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1372535703801982390, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
+      propertyPath: JumpSFX
+      value: MetalJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372535703801982390, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
       propertyPath: WalkSFXTitle1
       value: Metal1
       objectReference: {fileID: 0}
@@ -1225,7 +1229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372535703801982390, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
       propertyPath: WalkSFXInterval
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1380296205092033808, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1337,6 +1341,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5938840235908406740, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051520024796545951, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8775022730466074916, guid: 63484af579fde2149953ac0dc54f661d, type: 3}

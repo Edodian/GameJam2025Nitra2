@@ -157,3 +157,15 @@ MonoBehaviour:
     Music: 0
     Sound: 0
     Ambient: 1
+  - name: MetalJump
+    clip: {fileID: 8300000, guid: d3cc4de47fca1144da48f94d59b12c7f, type: 3}
+    volume: 0.5
+    volumeVariance: 0.3
+    pitch: 1.1
+    pitchVariance: 0.25
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    Music: 0
+    Sound: 1
+    Ambient: 0

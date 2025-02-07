@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class P_Movement : MonoBehaviour
@@ -9,11 +10,12 @@ public class P_Movement : MonoBehaviour
     public float gravity = 9.81f;
     public string WalkSFXTitle1;
     public string WalkSFXTitle2;
+    public string JumpSFX;
     public float WalkSFXInterval = 0.6f;
 
     private CharacterController myController;
     private Vector3 velocity;
-    public bool isGrounded,isRunning;
+    public bool isGrounded, isRunning, isJumped;
     private bool isSFXPlaying, stepturn;
 
     void Start()
@@ -43,26 +45,34 @@ public class P_Movement : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
+            isJumped = true;
         }
 
         velocity.y -= gravity * Time.deltaTime;
         myController.Move(velocity * Time.deltaTime);
-        if ((movementY != 0 || movementX != 0) && !isSFXPlaying && SoundManager.sndm != null)
-
+        if (isGrounded && (movementY != 0 || movementX != 0) && !isSFXPlaying && SoundManager.sndm != null)
         {
             StartCoroutine(PlayStep());
+        }
+        if (isJumped && !isGrounded)
+        {
+            SoundManager.sndm.Play(JumpSFX);
+            isJumped = false;
         }
     }
     private IEnumerator PlayStep()
     {
         isSFXPlaying = true;
-        FindObjectOfType<SoundManager>().Play(stepturn ? WalkSFXTitle1 : WalkSFXTitle2);
+        SoundManager.sndm.Play(stepturn ? WalkSFXTitle1 : WalkSFXTitle2);
+
         stepturn = !stepturn;
         if (!isRunning)
         {
             yield return new WaitForSeconds(WalkSFXInterval);
-        }else{
-            yield return new WaitForSeconds(WalkSFXInterval/2);
+        }
+        else
+        {
+            yield return new WaitForSeconds(WalkSFXInterval / 2);
         }
         isSFXPlaying = false;
     }
