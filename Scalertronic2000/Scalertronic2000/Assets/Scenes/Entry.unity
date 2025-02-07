@@ -1116,7 +1116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 990339370544430517, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1372535703801982390, guid: 63484af579fde2149953ac0dc54f661d, type: 3}
       propertyPath: WalkSFXTitle1

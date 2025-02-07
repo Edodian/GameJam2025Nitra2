@@ -99,7 +99,7 @@ MonoBehaviour:
     Ambient: 0
   - name: ScaleDown
     clip: {fileID: 8300000, guid: dd13f8a2d9d0de149a54c4fa33399f2a, type: 3}
-    volume: 0.9
+    volume: 1
     volumeVariance: 0.1
     pitch: 1.1
     pitchVariance: 0.1
@@ -111,7 +111,7 @@ MonoBehaviour:
     Ambient: 0
   - name: ScaleUp
     clip: {fileID: 8300000, guid: e4d4d546f6b2e784b8f3863bd42e86eb, type: 3}
-    volume: 0.9
+    volume: 1
     volumeVariance: 0.1
     pitch: 1.1
     pitchVariance: 0.1
