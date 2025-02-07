@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class P_Movement : MonoBehaviour
@@ -13,6 +14,7 @@ public class P_Movement : MonoBehaviour
     public string JumpSFX;
     public float WalkSFXInterval = 0.6f;
 
+    public stateHandler stateHandler;
     private CharacterController myController;
     private Vector3 velocity;
     public bool isGrounded, isRunning, isJumped;
@@ -21,43 +23,49 @@ public class P_Movement : MonoBehaviour
     void Start()
     {
         myController = GetComponent<CharacterController>();
+        if(stateHandler==null){
+            Debug.LogError("ADD STATEHANDLER!!! Assets/Ui/StateHandler");
+        }
     }
 
     void Update()
     {
-        isGrounded = myController.isGrounded;
-
-        if (isGrounded && velocity.y < 0)
+        if (!(stateHandler.isPaused || stateHandler.isCompleted))
         {
-            velocity.y = -2f;
-            //Debug.Log("Grounded!");
-        }
+            isGrounded = myController.isGrounded;
 
-        float movementY = Input.GetAxis("Vertical");
-        float movementX = Input.GetAxis("Horizontal");
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+                //Debug.Log("Grounded!");
+            }
 
-        isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            float movementY = Input.GetAxis("Vertical");
+            float movementX = Input.GetAxis("Horizontal");
 
-        Vector3 move = transform.right * movementX + transform.forward * movementY;
-        myController.Move(move * (!isRunning ? sprintSpeed : movementSpeed) * Time.deltaTime);
+            isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
-        // Jumping
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
-            isJumped = true;
-        }
+            Vector3 move = transform.right * movementX + transform.forward * movementY;
+            myController.Move(move * (!isRunning ? sprintSpeed : movementSpeed) * Time.deltaTime);
 
-        velocity.y -= gravity * Time.deltaTime;
-        myController.Move(velocity * Time.deltaTime);
-        if (isGrounded && (movementY != 0 || movementX != 0) && !isSFXPlaying && SoundManager.sndm != null)
-        {
-            StartCoroutine(PlayStep());
-        }
-        if (isJumped && !isGrounded)
-        {
-            SoundManager.sndm.Play(JumpSFX);
-            isJumped = false;
+            // Jumping
+            if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
+                isJumped = true;
+            }
+
+            velocity.y -= gravity * Time.deltaTime;
+            myController.Move(velocity * Time.deltaTime);
+            if (isGrounded && (movementY != 0 || movementX != 0) && !isSFXPlaying && SoundManager.sndm != null)
+            {
+                StartCoroutine(PlayStep());
+            }
+            if (isJumped && !isGrounded)
+            {
+                SoundManager.sndm.Play(JumpSFX);
+                isJumped = false;
+            }
         }
     }
     private IEnumerator PlayStep()

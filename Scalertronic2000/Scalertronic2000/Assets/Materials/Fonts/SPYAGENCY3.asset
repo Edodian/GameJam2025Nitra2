@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: SPYAGENCY2
+  m_Name: SPYAGENCY3
   m_EditorClassIdentifier: 
-  hashCode: -803208321
+  hashCode: -803208322
   material: {fileID: 7570764421178213761}
-  materialHashCode: -700030337
+  materialHashCode: -161407458
   m_Version: 1.1.0
   m_SourceFontFileGUID: 03e2377774034db489ce941c10d0a645
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 03e2377774034db489ce941c10d0a645, type: 3}
@@ -4409,7 +4409,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - BEVEL_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -4468,7 +4469,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.086
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
@@ -4503,6 +4504,6 @@ Material:
     - _OutlineColor: {r: 1, g: 0, b: 0.794415, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.06377697, g: 0, b: 1, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_BuildTextureStacks: []

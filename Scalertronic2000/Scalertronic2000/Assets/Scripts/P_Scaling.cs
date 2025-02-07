@@ -13,6 +13,7 @@ public class P_Scaling : MonoBehaviour
     private P_Movement p_Movement;
     private float originalspeed;
     private Coroutine scalingCoroutine; // To keep track of the active scaling coroutine
+    public stateHandler stateHandler;
 
 
     void Start()
@@ -25,7 +26,10 @@ public class P_Scaling : MonoBehaviour
             Debug.LogError("P_Movement script is missing!");
             return;
         }
-
+        if (stateHandler == null)
+        {
+            Debug.LogError("ADD STATEHANDLER!!! Assets/Ui/StateHandler");
+        }
         originalScale = transform.localScale;
         originalspeed = p_Movement.movementSpeed; // Now correctly references movementSpeed
                                                   //     audioSource = gameObject.GetComponent<AudioSource>();
@@ -34,42 +38,45 @@ public class P_Scaling : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && p_Movement.isGrounded)
+        if (!(stateHandler.isPaused || stateHandler.isCompleted))
         {
-            if (scalingCoroutine != null)
+            if (Input.GetKeyDown(KeyCode.E) && p_Movement.isGrounded)
             {
-                StopCoroutine(scalingCoroutine);
-            }
-
-            if (isSmall)
-            {
-                scalingCoroutine = StartCoroutine(SmoothScale(originalScale));
-                p_Movement.movementSpeed = originalspeed / 2;
-                //   audioSource.PlayOneShot(scaleDown, 1);
-                if (SoundManager.sndm != null)
+                if (scalingCoroutine != null)
                 {
-                    SoundManager.sndm.Play("ScaleDown");
+                    StopCoroutine(scalingCoroutine);
                 }
-            }
-            else
-            {
-                if (canScale)
+
+                if (isSmall)
                 {
-                    Vector3 targetScale = originalScale * ScaleMultiplier;
-                    scalingCoroutine = StartCoroutine(SmoothScale(targetScale)); // Smooth scale up
-                    p_Movement.movementSpeed = originalspeed;
-                    //      audioSource.PlayOneShot(scaleUp, 1);
+                    scalingCoroutine = StartCoroutine(SmoothScale(originalScale));
+                    p_Movement.movementSpeed = originalspeed / 2;
+                    //   audioSource.PlayOneShot(scaleDown, 1);
                     if (SoundManager.sndm != null)
                     {
-                        SoundManager.sndm.Play("ScaleUp");
+                        SoundManager.sndm.Play("ScaleDown");
                     }
                 }
                 else
                 {
-                    Debug.Log("Can't scale up, something is above!");
+                    if (canScale)
+                    {
+                        Vector3 targetScale = originalScale * ScaleMultiplier;
+                        scalingCoroutine = StartCoroutine(SmoothScale(targetScale)); // Smooth scale up
+                        p_Movement.movementSpeed = originalspeed;
+                        //      audioSource.PlayOneShot(scaleUp, 1);
+                        if (SoundManager.sndm != null)
+                        {
+                            SoundManager.sndm.Play("ScaleUp");
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Can't scale up, something is above!");
+                    }
                 }
-            }
 
+            }
         }
     }
 
