@@ -14,7 +14,8 @@ public class MenuScript : MonoBehaviour
     {
         stateHandler.isPaused = false;
         stateHandler.isCompleted = false;
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         PauseMenu.SetActive(false);
         if (SceneUi != null)
         {
