@@ -37,16 +37,16 @@ public class P_Scaling : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && p_Movement.isGrounded) // Example key for scaling up
+        if (Input.GetKeyDown(KeyCode.E) && p_Movement.isGrounded)
         {
-            if (scalingCoroutine != null) // Stop any ongoing scaling before starting a new one
+            if (scalingCoroutine != null) 
             {
                 StopCoroutine(scalingCoroutine);
             }
 
             if (isSmall)
             {
-                scalingCoroutine = StartCoroutine(SmoothScale(originalScale)); // Smooth scale down
+                scalingCoroutine = StartCoroutine(SmoothScale(originalScale));
                 p_Movement.movementSpeed = originalspeed / 2;
                 audioSource.PlayOneShot(scaleDown, 1);
             }
@@ -64,7 +64,7 @@ public class P_Scaling : MonoBehaviour
                     Debug.Log("Can't scale up, something is above!");
                 }
             }
-            isSmall = !isSmall; // Toggle the scaling state
+            
         }
     }
 
@@ -83,6 +83,8 @@ public class P_Scaling : MonoBehaviour
 
         transform.localScale = targetScale; // Ensure the final scale is set
         Debug.Log("Scaling complete!");
+        isSmall = !isSmall; 
+        
     }
 
     private void OnTriggerEnter(Collider target)

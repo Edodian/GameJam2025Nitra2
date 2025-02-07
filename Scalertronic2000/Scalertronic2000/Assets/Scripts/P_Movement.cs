@@ -33,7 +33,7 @@ public class P_Movement : MonoBehaviour
         bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
         Vector3 move = transform.right * movementX + transform.forward * movementY;
-        myController.Move(move * (isRunning ? sprintSpeed : movementSpeed) * Time.deltaTime);
+        myController.Move(move * (!isRunning ? sprintSpeed : movementSpeed) * Time.deltaTime);
 
         // Jumping
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
