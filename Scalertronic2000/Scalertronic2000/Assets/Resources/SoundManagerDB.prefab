@@ -50,266 +50,110 @@ MonoBehaviour:
   SoundVolume: 0.5
   sounds:
   - name: MainTheme
-    clip: {fileID: 8300000, guid: 6a818006af31abb4a9edb69a377af7ba, type: 3}
-    volume: 0.127
+    clip: {fileID: 8300000, guid: a21313fe1d3baa740ae206a4ebb75050, type: 3}
+    volume: 0.214
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 1
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 1
     Sound: 0
     Ambient: 0
-  - name: Click
-    clip: {fileID: 8300000, guid: 05cc3179ed74ac744aa3b5079a06e5c2, type: 3}
-    volume: 0.5
-    volumeVariance: 0.2
-    pitch: 1
-    pitchVariance: 0.2
+  - name: Yes
+    clip: {fileID: 8300000, guid: 69c5b60bec123c54ebba614b19a255af, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1.1
+    pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: BaloonPop
-    clip: {fileID: 8300000, guid: f5779dc387b8c3c43bc72c6a4e36e396, type: 3}
-    volume: 0.3
-    volumeVariance: 0.1
+    Sound: 0
+    Ambient: 1
+  - name: No
+    clip: {fileID: 8300000, guid: 854f41c1f2a7a5a4a99e47e4744cb851, type: 3}
+    volume: 0.509
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    Music: 0
+    Sound: 0
+    Ambient: 1
+  - name: Click
+    clip: {fileID: 8300000, guid: 3c0ce9d935cb3404b806024350f2c301, type: 3}
+    volume: 0.509
+    volumeVariance: 0.2
     pitch: 1
     pitchVariance: 0.25
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 0
-    Sound: 1
+    Sound: 0
     Ambient: 0
-  - name: BaloonPop2
-    clip: {fileID: 8300000, guid: 61075292122ac3541862114c98e3231a, type: 3}
-    volume: 0.3
+  - name: ScaleDown
+    clip: {fileID: 8300000, guid: dd13f8a2d9d0de149a54c4fa33399f2a, type: 3}
+    volume: 0.9
     volumeVariance: 0.1
-    pitch: 1
-    pitchVariance: 0.2
+    pitch: 1.1
+    pitchVariance: 0.1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 0
     Sound: 1
     Ambient: 0
-  - name: CartoonShot
-    clip: {fileID: 8300000, guid: 942e970fa416eb947b136f07302cbdb4, type: 3}
-    volume: 0.297
+  - name: ScaleUp
+    clip: {fileID: 8300000, guid: e4d4d546f6b2e784b8f3863bd42e86eb, type: 3}
+    volume: 0.9
     volumeVariance: 0.1
-    pitch: 1
-    pitchVariance: 0.2
+    pitch: 1.1
+    pitchVariance: 0.1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 0
     Sound: 1
     Ambient: 0
-  - name: Constelation_high_pitch
-    clip: {fileID: 8300000, guid: e3ed29a24a729af40a4e7277bda13cc5, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0.15
+  - name: ScaleUp
+    clip: {fileID: 8300000, guid: e4d4d546f6b2e784b8f3863bd42e86eb, type: 3}
+    volume: 0.9
+    volumeVariance: 0.1
+    pitch: 1.1
+    pitchVariance: 0.1
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 0
     Sound: 1
     Ambient: 0
-  - name: SpaceTheme
-    clip: {fileID: 8300000, guid: cbf1a696a75ccb146b64a4153c0f333e, type: 3}
-    volume: 0.902
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 1
-    Sound: 0
-    Ambient: 0
-  - name: Constelation_low_pitch
-    clip: {fileID: 8300000, guid: 0ff97a25b13e80c41839022d52759ded, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0.15
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: Grass1
-    clip: {fileID: 8300000, guid: 27f59d84e44b5684dbe0dc1e4b52c4d1, type: 3}
-    volume: 0.35
-    volumeVariance: 0.3
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: Grass2
-    clip: {fileID: 8300000, guid: 9f667b26385b2ec4f83a206b16004d62, type: 3}
-    volume: 0.35
-    volumeVariance: 0.25
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: Wood1
-    clip: {fileID: 8300000, guid: e081799cbf7f1b54aafb5151422c83d8, type: 3}
-    volume: 0.35
-    volumeVariance: 0.25
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: Wood2
-    clip: {fileID: 8300000, guid: 870e312fd3275a845919e97f1fe86cf9, type: 3}
-    volume: 0.35
-    volumeVariance: 0.25
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 1
-  - name: Fanfare
-    clip: {fileID: 8300000, guid: 8bb98124810bc344ab3039bca0065425, type: 3}
-    volume: 0.345
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 1
-    Sound: 0
-    Ambient: 0
-  - name: ShootingRangeTheme
-    clip: {fileID: 8300000, guid: ba39470558773474f92a7e19e7a53f34, type: 3}
-    volume: 0.236
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 1
-    Sound: 0
-    Ambient: 0
-  - name: Snow
-    clip: {fileID: 8300000, guid: 984edf8dee2158f4eae866644ee182b2, type: 3}
+  - name: Metal1
+    clip: {fileID: 8300000, guid: 70657dc4aed712841844ebe95c1a2d12, type: 3}
     volume: 0.5
-    volumeVariance: 0.38
-    pitch: 1
-    pitchVariance: 0.453
+    volumeVariance: 0.3
+    pitch: 1.1
+    pitchVariance: 0.25
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 0
     Sound: 0
     Ambient: 1
-  - name: SkiiStep
-    clip: {fileID: 8300000, guid: 984edf8dee2158f4eae866644ee182b2, type: 3}
-    volume: 0.6
-    volumeVariance: 0.2
-    pitch: 1.17
-    pitchVariance: 0.2
+  - name: Metal2
+    clip: {fileID: 8300000, guid: 419c14f8ed837274f8c62220b14f730c, type: 3}
+    volume: 0.5
+    volumeVariance: 0.3
+    pitch: 1.1
+    pitchVariance: 0.25
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
     Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: SkiingTheme
-    clip: {fileID: 8300000, guid: 598413b1a7c5dc64b8654db6a203b94d, type: 3}
-    volume: 0.3
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 1
     Sound: 0
-    Ambient: 0
-  - name: WaterSplash
-    clip: {fileID: 8300000, guid: 6ef593d88ba482e47a64a7ab3011b7a1, type: 3}
-    volume: 0.3
-    volumeVariance: 0.3
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: Sweep1
-    clip: {fileID: 8300000, guid: 8f2f5f9391d1e714fb60b6c3a2838c39, type: 3}
-    volume: 0.3
-    volumeVariance: 0.3
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: Sweep2
-    clip: {fileID: 8300000, guid: 2485261766558624c8512b9a24bd9402, type: 3}
-    volume: 0.3
-    volumeVariance: 0.3
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: Bobber
-    clip: {fileID: 8300000, guid: bd7dc5fec54150d4881ac2eb7264fc84, type: 3}
-    volume: 0.3
-    volumeVariance: 0.3
-    pitch: 1
-    pitchVariance: 0.3
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
-  - name: FishDrop
-    clip: {fileID: 8300000, guid: 6360c121433884a4894d710218782394, type: 3}
-    volume: 1
-    volumeVariance: 0.15
-    pitch: 1
-    pitchVariance: 0.15
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-    Music: 0
-    Sound: 1
-    Ambient: 0
+    Ambient: 1

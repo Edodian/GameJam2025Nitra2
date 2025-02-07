@@ -15,15 +15,11 @@ public class P_Scaling : MonoBehaviour
     private Coroutine scalingCoroutine; // To keep track of the active scaling coroutine
 
 
-    public AudioSource audioSource;
-    public AudioClip scaleUp;
-    public AudioClip scaleDown;
-
     void Start()
     {
         // Assign P_Movement dynamically
         p_Movement = GetComponent<P_Movement>();
-        
+
         if (p_Movement == null)
         {
             Debug.LogError("P_Movement script is missing!");
@@ -32,14 +28,15 @@ public class P_Scaling : MonoBehaviour
 
         originalScale = transform.localScale;
         originalspeed = p_Movement.movementSpeed; // Now correctly references movementSpeed
-        audioSource = gameObject.GetComponent<AudioSource>();
+                                                  //     audioSource = gameObject.GetComponent<AudioSource>();
+
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && p_Movement.isGrounded)
         {
-            if (scalingCoroutine != null) 
+            if (scalingCoroutine != null)
             {
                 StopCoroutine(scalingCoroutine);
             }
@@ -48,7 +45,11 @@ public class P_Scaling : MonoBehaviour
             {
                 scalingCoroutine = StartCoroutine(SmoothScale(originalScale));
                 p_Movement.movementSpeed = originalspeed / 2;
-                audioSource.PlayOneShot(scaleDown, 1);
+                //   audioSource.PlayOneShot(scaleDown, 1);
+                if (SoundManager.sndm != null)
+                {
+                    SoundManager.sndm.Play("ScaleDown");
+                }
             }
             else
             {
@@ -57,14 +58,18 @@ public class P_Scaling : MonoBehaviour
                     Vector3 targetScale = originalScale * ScaleMultiplier;
                     scalingCoroutine = StartCoroutine(SmoothScale(targetScale)); // Smooth scale up
                     p_Movement.movementSpeed = originalspeed;
-                    audioSource.PlayOneShot(scaleUp, 1);
+                    //      audioSource.PlayOneShot(scaleUp, 1);
+                    if (SoundManager.sndm != null)
+                    {
+                        SoundManager.sndm.Play("ScaleUp");
+                    }
                 }
                 else
                 {
                     Debug.Log("Can't scale up, something is above!");
                 }
             }
-            
+
         }
     }
 
@@ -83,8 +88,8 @@ public class P_Scaling : MonoBehaviour
 
         transform.localScale = targetScale; // Ensure the final scale is set
         Debug.Log("Scaling complete!");
-        isSmall = !isSmall; 
-        
+        isSmall = !isSmall;
+
     }
 
     private void OnTriggerEnter(Collider target)

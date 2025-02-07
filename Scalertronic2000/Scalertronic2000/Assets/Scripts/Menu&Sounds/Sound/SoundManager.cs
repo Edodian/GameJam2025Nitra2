@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
 
                 if (_instance == null)
                 {
-                    GameObject prefab = Resources.Load<GameObject>("SoundManagerDB"); 
+                    GameObject prefab = Resources.Load<GameObject>("SoundManagerDB");
                     if (prefab != null)
                     {
                         GameObject instance = Instantiate(prefab);
@@ -62,7 +62,11 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         InitializeSounds();
     }
-
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void InitializeOnLoad()
+    {
+        var soundManagerInstance = sndm;
+    }
     private void InitializeSounds()
     {
         soundDictionary = new Dictionary<string, SoundClass>();
@@ -91,7 +95,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Sound: "+sound+" not found!");
+            Debug.LogWarning("Sound: " + sound + " not found!");
         }
     }
 
@@ -103,7 +107,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Sound: "+sound+" not found!");
+            Debug.LogWarning("Sound: " + sound + " not found!");
         }
     }
 
@@ -167,16 +171,16 @@ public class SoundManager : MonoBehaviour
         }
     }
     public bool IsPlaying(string sound)
-{
-    if (soundDictionary.TryGetValue(sound, out SoundClass s) && s.source != null)
     {
-        return s.source.isPlaying;
+        if (soundDictionary.TryGetValue(sound, out SoundClass s) && s.source != null)
+        {
+            return s.source.isPlaying;
+        }
+        else
+        {
+            Debug.LogWarning("Checked sound: " + sound + " not found or has no AudioSource!");
+            return false;
+        }
     }
-    else
-    {
-        Debug.LogWarning("Checked sound: "+sound+" not found or has no AudioSource!");
-        return false;
-    }
-}
 
 }
