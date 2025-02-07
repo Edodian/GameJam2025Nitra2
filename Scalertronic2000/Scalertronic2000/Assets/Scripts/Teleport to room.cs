@@ -8,10 +8,10 @@ public class Teleporttoroom : MonoBehaviour
 
     public GameObject target;
 
-    //public Camera camera;
+    public Camera camera;
     void Start()
     {
- 
+        
     }
 
     // Update is called once per frame
