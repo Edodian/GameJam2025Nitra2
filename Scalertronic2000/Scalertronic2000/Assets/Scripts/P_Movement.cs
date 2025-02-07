@@ -19,6 +19,7 @@ public class P_Movement : MonoBehaviour
     private Vector3 velocity;
     public bool isGrounded, isRunning, isJumped;
     private bool isSFXPlaying, stepturn;
+    private Wires wires;
 
     void Start()
     {
@@ -26,6 +27,16 @@ public class P_Movement : MonoBehaviour
         if(stateHandler==null){
             Debug.LogError("ADD STATEHANDLER!!! Assets/Ui/StateHandler");
         }
+
+        wires = GetComponent<Wires>(); 
+    if (wires == null)
+    {
+        wires = FindObjectOfType<Wires>(); // Tries to find it in the scene
+        if (wires == null)
+        {
+            Debug.LogError("Wires script is missing! Attach it to a GameObject.");
+        }
+    }
     }
 
     void Update()
@@ -54,6 +65,20 @@ public class P_Movement : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
                 isJumped = true;
             }
+
+            if (Input.GetKey(KeyCode.F ) && wires.CanWire)
+        {
+        if (wires == null)
+        {
+            Debug.LogError("Wires reference is NULL! Make sure the Wires script is attached.");
+            return; // Prevent further errors
+        }
+
+        if (wires.CanWire)
+        {
+            wires.wired();
+        }
+        }
 
             velocity.y -= gravity * Time.deltaTime;
             myController.Move(velocity * Time.deltaTime);
