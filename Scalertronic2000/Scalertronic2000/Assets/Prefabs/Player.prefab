@@ -343,6 +343,10 @@ MonoBehaviour:
   ScaleMultiplier: 1.5
   ScaleJumpnig: 1.5
   canScale: 1
+  scaleDuration: 3
+  audioSource: {fileID: 0}
+  scaleUp: {fileID: 0}
+  scaleDown: {fileID: 0}
 --- !u!136 &6469673272942163626
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -363,6 +367,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.29831332
-  m_Height: 1.692586
+  m_Height: 17.240368
   m_Direction: 1
-  m_Center: {x: 0, y: 2.0231652, z: 0}
+  m_Center: {x: 0, y: 9.797056, z: 0}

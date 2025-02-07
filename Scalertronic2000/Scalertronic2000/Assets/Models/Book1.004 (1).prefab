@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3651816485889525117}
   m_Layer: 0
   m_Name: Book1.004 (1)
-  m_TagString: Untagged
+  m_TagString: Paper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

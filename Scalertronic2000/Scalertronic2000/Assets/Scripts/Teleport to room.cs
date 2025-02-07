@@ -31,7 +31,7 @@ public class Teleporttoroom : MonoBehaviour
     IEnumerator Teleport(){
         Destroy(target);
         yield return new WaitForSeconds(2);
-      //  SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("Scene1");
 
     }
 }

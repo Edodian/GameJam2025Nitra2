@@ -24,10 +24,10 @@ public class ResolutionSettings : MonoBehaviour
             string resolutionOption = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(resolutionOption);
 
-            // if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-            // {
-            //     currentResolutionIndex = i;
-            // }
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResolutionIndex = i;
+            }
         }
 
         resolutionDropdown.AddOptions(options);
