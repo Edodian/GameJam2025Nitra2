@@ -1,26 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject paint_fragment;
+    private GameObject gs;
+    private void Start()
     {
-        
+        paint_fragment.SetActive(false);
+        gs = GameObject.FindWithTag("GameController");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider target)
     {
-        
-    }
-
-        private void OnTriggerEnter(Collider target)
-    {
-        if (target.tag == "Player"){
+        if (target.tag == "Player")
+        {
             Debug.Log("Got point!");
+            paint_fragment.SetActive(true);
             Destroy(gameObject);
+        if (gs != null){
+            gs.GetComponent<GameController>().PickUpPicked();
+            Debug.Log("pickup triggered");
+        }
         }
     }
 }

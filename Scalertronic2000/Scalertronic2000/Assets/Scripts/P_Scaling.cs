@@ -33,6 +33,7 @@ public class P_Scaling : MonoBehaviour
         originalScale = transform.localScale;
         originalspeed = p_Movement.movementSpeed; // Now correctly references movementSpeed
                                                   //     audioSource = gameObject.GetComponent<AudioSource>();
+    //ScaleUp();
 
     }
 
