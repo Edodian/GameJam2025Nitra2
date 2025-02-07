@@ -592,6 +592,7 @@ GameObject:
   - component: {fileID: 2618189832497083055}
   - component: {fileID: 6201898836759512796}
   - component: {fileID: 20030560605069661}
+  - component: {fileID: 3471624582234536301}
   m_Layer: 0
   m_Name: Bottle with flowers (1)
   m_TagString: Untagged
@@ -692,6 +693,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3471624582234536301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018832576727448841}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.50217026, y: 1.4854636, z: 0.50217026}
+  m_Center: {x: 4.3002133e-24, y: -0.005076796, z: -0.0000019073486}
 --- !u!1 &2127501963574253043
 GameObject:
   m_ObjectHideFlags: 0
