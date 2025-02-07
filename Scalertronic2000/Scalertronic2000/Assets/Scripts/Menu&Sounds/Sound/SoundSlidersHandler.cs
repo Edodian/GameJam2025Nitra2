@@ -24,7 +24,6 @@ public class SoundSlidersHandler : MonoBehaviour
 
     private void UpdateSliders()
     {
-        // Update slider values based on current SoundManager settings
         SndVolumeSlider.value = sndm.SoundVolume;
         MscVolumeSlider.value = sndm.MusicVolume;
         AmbVolumeSlider.value = sndm.AmbientVolume;
