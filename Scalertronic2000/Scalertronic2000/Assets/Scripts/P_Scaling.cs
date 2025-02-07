@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class P_Scaling : MonoBehaviour
@@ -6,10 +7,17 @@ public class P_Scaling : MonoBehaviour
     public float ScaleMultiplier = 1.5f;
     public float ScaleJumpnig = 1.5f;
     public bool canScale = true;
+    public float scaleDuration = 3f; // Duration for scaling transition
 
     private Vector3 originalScale; // Store the initial scale
     private P_Movement p_Movement;
     private float originalspeed;
+    private Coroutine scalingCoroutine; // To keep track of the active scaling coroutine
+
+
+    public AudioSource audioSource;
+    public AudioClip scaleUp;
+    public AudioClip scaleDown;
 
     void Start()
     {
@@ -24,44 +32,57 @@ public class P_Scaling : MonoBehaviour
 
         originalScale = transform.localScale;
         originalspeed = p_Movement.movementSpeed; // Now correctly references movementSpeed
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && p_Movement.isGrounded) // Example key for scaling up
         {
-            if (isSmall )
+            if (scalingCoroutine != null) // Stop any ongoing scaling before starting a new one
             {
-                ScaleDown();
+                StopCoroutine(scalingCoroutine);
+            }
+
+            if (isSmall)
+            {
+                scalingCoroutine = StartCoroutine(SmoothScale(originalScale)); // Smooth scale down
+                p_Movement.movementSpeed = originalspeed / 2;
+                audioSource.PlayOneShot(scaleDown, 1);
             }
             else
             {
                 if (canScale)
                 {
-                    ScaleUp();
+                    Vector3 targetScale = originalScale * ScaleMultiplier;
+                    scalingCoroutine = StartCoroutine(SmoothScale(targetScale)); // Smooth scale up
+                    p_Movement.movementSpeed = originalspeed;
+                    audioSource.PlayOneShot(scaleUp, 1);
                 }
                 else
                 {
                     Debug.Log("Can't scale up, something is above!");
                 }
             }
+            isSmall = !isSmall; // Toggle the scaling state
         }
     }
 
-    private void ScaleUp()
+    private IEnumerator SmoothScale(Vector3 targetScale)
     {
-        transform.localScale = originalScale * ScaleMultiplier; 
-        Debug.Log("Scaled Up!");
-        isSmall = true;
-        p_Movement.movementSpeed = originalspeed; // Restore movementSpeed
-    }
+        float elapsed = 0f;
+        Vector3 startingScale = transform.localScale;
 
-    private void ScaleDown()
-    {
-        transform.localScale = originalScale; // Reset to original size
-        Debug.Log("Scaled Down!");
-        isSmall = false;
-        p_Movement.movementSpeed = originalspeed * (ScaleMultiplier/4); 
+        while (elapsed < scaleDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / scaleDuration);
+            transform.localScale = Vector3.Lerp(startingScale, targetScale, t);
+            yield return null;
+        }
+
+        transform.localScale = targetScale; // Ensure the final scale is set
+        Debug.Log("Scaling complete!");
     }
 
     private void OnTriggerEnter(Collider target)
